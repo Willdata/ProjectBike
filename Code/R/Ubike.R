@@ -3,7 +3,7 @@ library(rvest)
 library(magrittr)
 library(data.table)
 
-for(i in 1:1){
+for(i in 1:100000){
 url <- "http://www.c-bike.com.tw/Station1.aspx"
 system.time(
   db_output <- url %>% 
