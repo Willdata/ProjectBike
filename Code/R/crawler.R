@@ -61,10 +61,10 @@ repeat{
   }
   )
   
-  if(Sys.Date() == "2016-09-20"){
+  if(Sys.Date() == "2016-08-22"){
     break
   }else{
-    print(sprintf("agent works - %s"), date())
+    print(sprintf("agent works - %s", date()))
     Sys.sleep(50)
   }
   
