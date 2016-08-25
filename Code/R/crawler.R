@@ -3,6 +3,17 @@ require(magrittr)
 require(data.table)
 #require(dplyr)
 
+##################################################################################
+### get current locale setting                                                   # 
+current <- Sys.getlocale()                                                       #
+### save original locale setting as a text file                                  #
+write(current, file = sprintf("R_locale_original_%s.txt", Sys.Date()))           #  
+                                                                                 #
+### set new locale time                                                          #
+Sys.setlocale("LC_TIME", "English")   # time will be displayed in English        #
+                                                                                 #
+##################################################################################
+
 url <- "http://www.c-bike.com.tw/Station1.aspx"
 
 repeat{
@@ -14,8 +25,8 @@ repeat{
       ### try part : crawler code
       tbls <- readHTMLTable(url, which = c(34,37), header = FALSE) %>% 
         rbindlist(., use.names = FALSE, fill = FALSE ) %>% 
-        data.table(Sys.time(), .) %>% 
-        set_colnames(c("dateTime", "stopName", "quantity", "vacancy"))
+        data.table(Sys.time(), weekdays(Sys.time(), abbreviate = TRUE), .) %>% 
+        set_colnames(c("dateTime", "weekday", "stopName", "quantity", "vacancy"))
       
       ### save as RDS data file
       readRDS("C:/Users/will.kuan/Desktop/ProjectX/Data/cityBike_Data2.RDS")%>%
@@ -81,8 +92,8 @@ repeat{
 #     ### try part : crawler code
 #     tbls <- readHTMLTable(url, which = c(34,37), header = FALSE) %>% 
 #       rbindlist(., use.names = FALSE, fill = FALSE ) %>% 
-#       data.table(Sys.time(), .) %>% 
-#       set_colnames(c("dateTime", "stopName", "quantity", "vacancy"))
+#       data.table(Sys.time(), weekdays(Sys.time(), abbreviate = TRUE), .) %>% 
+#       set_colnames(c("dateTime", "weekday", "stopName", "quantity", "vacancy"))
 #     
 #     ### save as RDS file
 #     saveRDS(tbls,"C:/Users/will.kuan/Desktop/ProjectX/Data/cityBike_Data2.RDS")
