@@ -5,7 +5,7 @@
 #                                                     #      
 #######################################################
 
-# data.bike <- readRDS("C:\\Users\\will.kuan\\Desktop\\ProjectX\\Data\\cityBike_Data.RDS")
+# data.bike <- readRDS("cityBike_Data.RDS")
 # data.bikeWithRowName <- data.bike
 
 

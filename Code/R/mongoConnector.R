@@ -8,7 +8,7 @@ m.bike$insert(data.bike)
 
 ### get json file and save it as a text file
 json.bike <- tempfile(pattern = "citybike", 
-                      tmpdir = "C:\\Users\\will.kuan\\Desktop\\ProjectX\\Data")
+                      tmpdir = tempdir())
 
 system.time(
   m.bike$export(file(json.bike))
@@ -24,7 +24,7 @@ system.time(
 
 ### export two type of json format file
 jsonPath <- tempfile(pattern = "citybike", 
-                     tmpdir = "C:\\Users\\will.kuan\\Desktop\\ProjectX\\Data",
+                     tmpdir = tempdir(),
                      fileext = ".txt")
 
 system.time(

@@ -29,10 +29,10 @@ repeat{
         set_colnames(c("dateTime", "weekday", "stopName", "quantity", "vacancy"))
       
       ### save as RDS data file
-      readRDS("C:/Users/will.kuan/Desktop/ProjectX/Data/cityBike_Data2.RDS")%>%
+      readRDS("cityBike_Data2.RDS")%>%
         list(.,tbls) %>% 
         rbindlist(., use.names = TRUE, fill = TRUE)%>%
-        saveRDS(.,"C:/Users/will.kuan/Desktop/ProjectX/Data/cityBike_Data2.RDS")
+        saveRDS(.,"cityBike_Data2.RDS")
       
       ### get task time
       newLog <- data.frame(c(proc.time() - start, time = date(), msg = NA)) %>% 
@@ -40,10 +40,10 @@ repeat{
         data.frame()
       
       ### save task log
-      read.delim("C:/Users/will.kuan/Desktop/ProjectX/Data/log2.txt", header = TRUE, sep = "\t") %>%
+      read.delim("log2.txt", header = TRUE, sep = "\t") %>%
         list(., newLog) %>% 
         rbindlist(., use.names = FALSE, fill = FALSE) %>% 
-        write.table("C:/Users/will.kuan/Desktop/ProjectX/Data/log2.txt", sep = "\t", row.names = FALSE)
+        write.table("log2.txt", sep = "\t", row.names = FALSE)
     },
     ### warning part
     warning = function(w){
@@ -53,10 +53,10 @@ repeat{
         t() %>% 
         data.frame()
       
-      read.delim("C:/Users/will.kuan/Desktop/ProjectX/Data/log2.txt", header = TRUE, sep = "\t") %>%
+      read.delim("log2.txt", header = TRUE, sep = "\t") %>%
         list(., newLog) %>% 
         rbindlist(., use.names = FALSE, fill = FALSE) %>% 
-        write.table("C:/Users/will.kuan/Desktop/ProjectX/Data/log2.txt", sep = "\t", row.names = FALSE)
+        write.table("log2.txt", sep = "\t", row.names = FALSE)
     },
     ### error peart
     error = function(e){
@@ -65,10 +65,10 @@ repeat{
         t() %>% 
         data.frame()
       
-      read.delim("C:/Users/will.kuan/Desktop/ProjectX/Data/log2.txt", header = TRUE, sep = "\t") %>%
+      read.delim("log2.txt", header = TRUE, sep = "\t") %>%
         list(., newLog) %>% 
         rbindlist(., use.names = FALSE, fill = FALSE) %>% 
-        write.table("C:/Users/will.kuan/Desktop/ProjectX/Data/log2.txt", sep = "\t", row.names = FALSE)
+        write.table("log2.txt", sep = "\t", row.names = FALSE)
     }
   )
   
@@ -96,13 +96,13 @@ repeat{
 #       set_colnames(c("dateTime", "weekday", "stopName", "quantity", "vacancy"))
 #     
 #     ### save as RDS file
-#     saveRDS(tbls,"C:/Users/will.kuan/Desktop/ProjectX/Data/cityBike_Data2.RDS")
+#     saveRDS(tbls,"cityBike_Data2.RDS")
 #     
 #     ### try part : get first log and save as a log file
 #     log <- matrix(c(proc.time() - start, time = date(), msg = NA), nrow = 1, byrow = TRUE) %>%
 #       set_colnames(c("user.self", "sys.self", "elapsed", "user.child", "sys.child", "time", "msg"))
 #     
-#     write.table(log, "C:/Users/will.kuan/Desktop/ProjectX/Data/log2.txt", sep = "\t", row.names = FALSE)
+#     write.table(log, "log2.txt", sep = "\t", row.names = FALSE)
 #   },
 #     ### error part : return error message
 #     error = function(e){
@@ -110,7 +110,7 @@ repeat{
 #       log <- matrix(c(proc.time() - start, time = date(), msg = error), nrow = 1, byrow = TRUE) %>%
 #       set_colnames(c("user.self", "sys.self", "elapsed", "user.child", "sys.child", "time", "msg"))
 #     
-#       write.table(log, "C:/Users/will.kuan/Desktop/ProjectX/Data/log2.txt", sep = "\t", row.names = FALSE)
+#       write.table(log, "log2.txt", sep = "\t", row.names = FALSE)
 #   },
 #     ### warning part : return warning message
 #     warning = function(w){
@@ -118,7 +118,7 @@ repeat{
 #       log <- matrix(c(proc.time() - start, time = date(), msg = warn), nrow = 1, byrow = TRUE) %>%
 #       set_colnames(c("user.self", "sys.self", "elapsed", "user.child", "sys.child", "time", "msg"))
 #     
-#       write.table(log, "C:/Users/will.kuan/Desktop/ProjectX/Data/log2.txt", sep = "\t", row.names = FALSE)
+#       write.table(log, "log2.txt", sep = "\t", row.names = FALSE)
 #   }
 # )
 #   

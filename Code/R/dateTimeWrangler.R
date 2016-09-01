@@ -12,7 +12,7 @@ Sys.setlocale("LC_TIME", "English")   # time will be displayed in English       
                                                                                  #
 ##################################################################################
 
-data.bike2 <- readRDS("C:/Users/will.kuan/Desktop/ProjectX/Data/cityBike_Data2.RDS")
+data.bike2 <- readRDS("cityBike_Data2.RDS")
 
 ### fix cityBike_Data2.RDS data format
 ### add extra <field> "weekday"
@@ -26,13 +26,13 @@ data.bike2 <- cbind(data.bike2[,list(dateTime)],
                     data.bike2[,list(stopName,quantity,vacancy)])
 
 ### Save data.bike2 as a RDS file
-saveRDS(data.bike2, "C:/Users/will.kuan/Desktop/ProjectX/Data/cityBike_Data2.RDS")
+saveRDS(data.bike2, "cityBike_Data2.RDS")
 
 ####################################################################################
 ###            fix citybike_data2 as above, fix citybike_data as below           ###     
 ####################################################################################
 
-data.bike <- readRDS("C:/Users/will.kuan/Desktop/ProjectX/Data/cityBike_Data.RDS")
+data.bike <- readRDS("cityBike_Data.RDS")
 
 ### cut off weekdays
 weekday <- substr(data.bike$dateTime, 1, 3)  # keep it first
@@ -64,7 +64,7 @@ dateTime <- transforMonth(  unlist(lapply(strsplit(data.bike$dateTime, " "), `[[
 data.bike <- cbind(dateTime = dateTime, weekday = weekday, data.bike[,list(stopName,quantity,vacancy)])
 
 ### save as a RDS file
-saveRDS(data.bike, file = "C:/Users/will.kuan/Desktop/ProjectX/Data/cityBike_Data.RDS")
+saveRDS(data.bike, file = "cityBike_Data.RDS")
 
 
 
