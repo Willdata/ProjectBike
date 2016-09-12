@@ -72,7 +72,7 @@ repeat{
   
   ##################################################################################################################################
   ### if end of the day is coming, make an empty log text file for next day
-  if( hour(Sys.time()) == 00 & substr(Sys.time(),15,16) == 00 )
+  if( hour(Sys.time()) == 00 & substr(Sys.time(),15,16) == "00" )
   {
     logPath <- paste("daily_log/log_",Sys.Date(),".txt", sep = "")
     RDSPath <- paste("daily_data/cityBike_Data_",Sys.Date(),".RDS", sep = "")
